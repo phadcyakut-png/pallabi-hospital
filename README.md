@@ -1,6 +1,6 @@
 # Pallabi Hospital & Diagnostic Center — Public Website
 
-A bilingual (বাংলা/English), responsive, multi-page static website for **Pallabi Hospital & Diagnostic Center**, Dhaka. This project uses the hospital-provided photographs, logo and management portraits.
+A bilingual (বাংলা/English), responsive, multi-page static website for **Pallabi Hospital & Diagnostic Center**, Dhaka. This project uses the hospital-provided photographs, logo and Chairman portrait.
 
 ## Website contents
 
@@ -8,7 +8,7 @@ A bilingual (বাংলা/English), responsive, multi-page static website for
 - Home, About, Vision/Mission, **Management Body**, **Leadership**, Services/Departments, Diagnostics, Facilities, Inpatient, Outpatient, Health Packages, Appointment Enquiries, Gallery, News, Health Insights, Patient Guide, FAQ, Careers, Contact and legal/accessibility pages.
 - The previous **Doctors directory has been removed** and can be restored later if approved doctor details become available.
 - Home hero contains the **official hospital logo**, with an icon linking to Google Maps.
-- Leadership and Management Body pages show four full-width individual profiles, Chairman first and featured larger. Their messages are **drafted website copy requiring management sign-off before publication as personal statements**.
+- Leadership and Management Body pages show only Papry Rahman, the Chairman, with her portrait and message. Her message is **drafted website copy requiring her approval before publication as a personal statement**.
 - Contact page contains an embedded Google map, direct Google Maps link, telephone dial action and email link.
 - Health-package enquiry cards link to the phone dialer (`tel:`). This is an enquiry interface, not a confirmed list of active packages or prices.
 - Appointments are handled by telephone. **No booking form collects patient details.**
@@ -18,7 +18,7 @@ A bilingual (বাংলা/English), responsive, multi-page static website for
 - **Google Maps address:** R9C8+84J, Road No. 4, Dhaka 1216, Bangladesh
 - **Telephone numbers:** 01334-923810 and 01334-923811 (both active `tel:` links throughout the site)
 - **Email:** pallabihospital@gmail.com
-- **Management:** Papry Rahman (Chairman), Md Rubel Howlader (CEO), Md Hasan Al Yakut (Managing Director), Md Jalal Uddin (Director)
+- **Leadership:** Papry Rahman (Chairman)
 
 The telephone numbers were confirmed by the site owner. Operating hours, departments and services have not been independently confirmed; pages direct visitors to phone the hospital where appropriate.
 

@@ -63,6 +63,36 @@
     input.addEventListener('input', search);
   });
 
+  // Switch between hospital photos and uncropped photo-card posters.
+  const galleryTabs = Array.from(document.querySelectorAll('[data-gallery-tab]'));
+  const galleryPanels = Array.from(document.querySelectorAll('[data-gallery-panel]'));
+  function selectGalleryTab(tab, focus = false) {
+    if (!tab) return;
+    galleryTabs.forEach(item => {
+      const selected = item === tab;
+      item.classList.toggle('active', selected);
+      item.setAttribute('aria-selected', String(selected));
+      item.tabIndex = selected ? 0 : -1;
+    });
+    galleryPanels.forEach(panel => {
+      panel.hidden = panel.dataset.galleryPanel !== tab.dataset.galleryTab;
+    });
+    if (focus) tab.focus();
+  }
+  galleryTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectGalleryTab(tab));
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let next = index;
+      if (event.key === 'ArrowLeft') next = (index - 1 + galleryTabs.length) % galleryTabs.length;
+      if (event.key === 'ArrowRight') next = (index + 1) % galleryTabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = galleryTabs.length - 1;
+      selectGalleryTab(galleryTabs[next], true);
+    });
+  });
+  if (location.hash === '#photo-cards') selectGalleryTab(galleryTabs.find(tab => tab.dataset.galleryTab === 'photocards'));
   const dialog = document.querySelector('#gallery-lightbox');
   document.querySelectorAll('[data-lightbox]').forEach(card => {
     card.addEventListener('click', () => {

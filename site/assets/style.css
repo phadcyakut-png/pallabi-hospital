@@ -87,3 +87,22 @@ body[lang=bn] .leadership-message{line-height:2.05}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #2486ad;outline-offset:3px}
 @media(max-width:900px){.policy-layout{grid-template-columns:215px minmax(0,1fr);gap:30px}.policy-sidebar{top:115px}.policy-toc{padding:21px 12px}}
 @media(max-width:680px){.hero-visual:before{width:min(95%,350px);top:50%}.hero-visual .hero-logo{width:70%;max-width:305px}.policy-overview{align-items:flex-start;gap:14px;padding:20px}.policy-overview-icon{width:44px;height:44px;border-radius:11px}.policy-overview-icon svg{width:23px;height:23px}.policy-overview p{font-size:.9rem}.policy-layout{display:block}.policy-sidebar{position:static;margin-bottom:36px}.policy-toc{padding:17px}.policy-toc h2{margin:0 8px 10px}.policy-toc>a{padding:9px 10px}.policy-section{scroll-margin-top:93px}.policy-section p{font-size:.92rem}.policy-contact{padding:25px 20px}.policy-contact-actions{display:grid}.policy-contact-link{font-size:.85rem}}
+
+/* Pallabi Photo Cards gallery — independent, uncropped poster grid */
+.gallery-collection-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:34px 0 35px;padding:6px;background:#edf4f6;border:1px solid #dbe9ed;border-radius:16px;width:fit-content;max-width:100%}
+.gallery-collection-tab{display:inline-flex;align-items:center;gap:9px;background:transparent;border:0;border-radius:11px;padding:11px 20px;color:var(--navy);font-size:.92rem;font-weight:800;white-space:normal;text-align:center}
+.gallery-collection-tab.active,.gallery-collection-tab[aria-selected=true]{background:var(--blue);color:white;box-shadow:0 5px 14px #075d852b}
+.gallery-collection-tab:focus-visible,.photocard-gallery-item:focus-visible{outline:3px solid #f5ae45;outline-offset:3px}
+.gallery-tab-count{background:#ffffff35;padding:0 7px;border-radius:99px;font-size:.75rem}
+.gallery-panel[hidden]{display:none!important}
+.gallery-panel-heading{font-size:clamp(1.4rem,2.4vw,2rem);color:var(--navy);margin:0 0 5px}
+.gallery-panel-description{font-size:.92rem;margin:0;max-width:700px}
+.photocard-gallery-grid{columns:3;column-gap:19px;margin-top:24px}
+.photocard-gallery-item{display:block;break-inside:avoid;width:100%;overflow:hidden;border:1px solid #e2eaf0;border-radius:17px;background:#fff;box-shadow:0 8px 23px #102f450b;margin-bottom:19px;text-align:left;cursor:zoom-in;transition:box-shadow .2s,transform .2s}
+.photocard-gallery-item:hover{transform:translateY(-3px);box-shadow:0 15px 30px #102f451b}
+.photocard-gallery-item img{width:100%;height:auto;object-fit:contain;transform:none!important;display:block;background:#f4f7f8}
+.photocard-gallery-item .photocard-caption{display:block;padding:12px 15px 14px;color:var(--navy);font-size:.84rem;font-weight:700;line-height:1.5;position:static;background:transparent}
+.photocard-gallery-item.hidden{display:none!important}
+@media(max-width:900px){.photocard-gallery-grid{columns:2}}
+@media(max-width:560px){.photocard-gallery-grid{columns:1}.gallery-collection-tabs{width:100%}.gallery-collection-tab{flex:1;justify-content:center;padding:11px 10px;font-size:.84rem}.photocard-gallery-grid .photocard-gallery-item{margin-bottom:17px}}
+

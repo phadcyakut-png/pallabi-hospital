@@ -30,33 +30,6 @@
       "verified": true,
       "message_en": "At Pallabi Hospital & Diagnostic Center, our focus is on the people and families who place their trust in us. We want every visit to begin with respect, attentive listening and clear communication. Our aspiration is to build a healthcare environment where compassion and responsibility guide every decision.",
       "message_bn": "পল্লবী হাসপাতাল এন্ড ডায়াগনস্টিক সেন্টারে আমাদের অগ্রাধিকার হলো সেবাপ্রত্যাশী মানুষ ও তাঁদের পরিবার। প্রতিটি সেবার শুরু হোক সম্মান, মনোযোগ ও স্পষ্ট যোগাযোগের মাধ্যমে—এটাই আমাদের প্রত্যাশা। সহমর্মিতা ও দায়িত্ববোধকে সামনে রেখে আমরা আস্থার পরিবেশ গড়ে তুলতে চাই।"
-    },
-    {
-      "role": "ceo",
-      "photo": "ceo.webp",
-      "name_en": "Md Rubel Howlader",
-      "name_bn": "মোঃ রুবেল হাওলাদার",
-      "verified": true,
-      "message_en": "A dependable healthcare experience requires more than good facilities. It requires coordination, responsiveness and an ongoing commitment to serve people well. My priority is to help create an environment where patients can find the information they need and feel supported when they reach out to us.",
-      "message_bn": "ভালো স্বাস্থ্যসেবার অভিজ্ঞতার জন্য অবকাঠামোর পাশাপাশি প্রয়োজন সমন্বয়, দ্রুত সাড়া ও সেবার প্রতি আন্তরিক অঙ্গীকার। রোগীরা যেন সহজে প্রয়োজনীয় তথ্য পান এবং যোগাযোগের প্রতিটি ধাপে সহযোগিতা অনুভব করেন—সেই পরিবেশ গড়ে তোলাই আমার লক্ষ্য।"
-    },
-    {
-      "role": "managing-director",
-      "photo": "managing-director.webp",
-      "name_en": "Md Hasan Al Yakut",
-      "name_bn": "মোঃ হাসান আল ইয়াকুত",
-      "verified": true,
-      "message_en": "We believe that thoughtful management and a welcoming atmosphere are important parts of patient care. Our work is guided by practical improvements, openness to feedback and respect for each individual. We hope that every interaction reflects the values our hospital stands for.",
-      "message_bn": "রোগীসেবার গুরুত্বপূর্ণ অংশ হলো সুপরিকল্পিত ব্যবস্থাপনা ও স্বাগতপূর্ণ পরিবেশ। বাস্তবসম্মত উন্নয়ন, মতামতের প্রতি গুরুত্ব এবং প্রত্যেক মানুষের প্রতি সম্মান—এই মূল্যবোধগুলো আমাদের কাজের ভিত্তি। প্রতিটি যোগাযোগে আমরা তার প্রতিফলন রাখতে চাই।"
-    },
-    {
-      "role": "director",
-      "photo": "director.webp",
-      "name_en": "Md Jalal Uddin",
-      "name_bn": "মোঃ জালাল উদ্দিন",
-      "verified": true,
-      "message_en": "Healthcare should be approachable and respectful. We value listening carefully, communicating clearly and being considerate of the needs of patients and families. Our commitment is to support a positive environment for everyone who comes to Pallabi Hospital & Diagnostic Center.",
-      "message_bn": "স্বাস্থ্যসেবার পরিবেশ হওয়া উচিত সহজে পৌঁছানো যায় এমন ও সম্মানজনক। মনোযোগ দিয়ে কথা শোনা, পরিষ্কারভাবে তথ্য জানানো এবং রোগী ও পরিবারের প্রয়োজনকে গুরুত্ব দেওয়াই আমাদের মূল্যবোধ। হাসপাতালে আসা প্রতিটি মানুষের জন্য ইতিবাচক পরিবেশ বজায় রাখতে আমরা কাজ করতে চাই।"
     }
   ],
   "doctors": [],

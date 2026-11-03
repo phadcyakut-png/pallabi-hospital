@@ -6,7 +6,7 @@
 - [x] Google Maps listing linked and embedded; listed address is **R9C8+84J, Road No. 4, Dhaka 1216, Bangladesh**.
 - [x] Both contact numbers configured: **01334-923810** and **01334-923811**.
 - [x] Hospital email configured: **pallabihospital@gmail.com**.
-- [x] Management names supplied: Papry Rahman, Md Rubel Howlader, Md Hasan Al Yakut and Md Jalal Uddin.
+- [x] Chairman name supplied: Papry Rahman.
 - [x] Homepage leadership section removed, standalone Management Body and Leadership pages available.
 - [x] Doctors page and related navigation removed.
 - [x] Health package call buttons activate telephone dialer.
@@ -17,9 +17,9 @@
 
 - [ ] Confirm which number should be prioritized for appointments and health-package price enquiries, if they serve different purposes.
 - [ ] Confirm the address or provide any more complete street/building/section information, if available.
-- [ ] Approve the **four written management messages**: text was composed for this website, not transcribed from the individuals.
-- [ ] Confirm the Bengali transliterations of the four management names.
-- [ ] Approve public use of logo, original photographs, and individual portraits; check photo consent for event attendees.
+- [ ] Approve **Papry Rahman’s written message**: text was composed for this website, not transcribed from her.
+- [ ] Confirm the Bengali spelling of Papry Rahman's name.
+- [ ] Approve public use of the logo, hospital photographs, and Papry Rahman's portrait; check photo consent for event attendees.
 - [ ] Provide exact patient visiting hours, consultation hours and any legitimate 24-hour service information.
 - [ ] Approve the actual department/specialty list and offered diagnostic tests. Generic enquiry sections are not proof of availability.
 - [ ] Confirm whether there are officially named health packages; all current cards are *enquiry topics* with no advertised price.
