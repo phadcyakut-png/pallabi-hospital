@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout imported website
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -59,26 +59,41 @@ jobs:
           PALLABI_CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
         run: python scripts/release_runtime.py verify
 
-      - name: Permanently save installed source files (first deploy only)
+      # Saving generated source code is useful, but it must never prevent
+      # the site itself from being published. A failed git push is reported
+      # as a warning; the release ZIP remains in GitHub to support retries.
+      - name: Save updated source to GitHub (optional; does not block website)
         if: ${{ hashFiles('pallabi-final-release.zip') != '' }}
+        continue-on-error: true
+        shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          rm pallabi-final-release.zip
-          git add -A -- build.py README.md CONTENT_TODO.md NEW-REPOSITORY.md \
-            content scripts source-images site/assets pallabi-final-release.zip
+          rm -f pallabi-final-release.zip
+          # Stage modifications and deletions, plus any newly installed files.
+          git add -u
+          for path in build.py README.md CONTENT_TODO.md NEW-REPOSITORY.md content scripts source-images site; do
+            if [[ -e "$path" ]]; then
+              git add -A -- "$path"
+            fi
+          done
           if git diff --cached --quiet; then
             echo 'No source changes to save.'
+          elif git commit -m 'Publish final hospital site: Chairman and bilingual photo cards'; then
+            if git push origin HEAD:main; then
+              echo 'Source files saved to main. The temporary release ZIP has been removed.'
+            else
+              echo '::warning title=Source commit denied::The site build passed, but GitHub blocked saving the source files. Publishing will continue; review Actions workflow permissions and branch rules.'
+            fi
           else
-            git commit -m 'Publish final hospital site: Chairman and bilingual photo cards'
-            git push origin HEAD:main
+            echo '::warning title=Source commit failed::Source files were not saved, but site publishing will continue.'
           fi
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
