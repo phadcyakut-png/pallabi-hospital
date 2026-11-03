@@ -1,4 +1,4 @@
-name: Build and deploy website to GitHub Pages
+name: Build and publish Pallabi Hospital
 
 on:
   push:
@@ -11,79 +11,84 @@ permissions:
   id-token: write
 
 concurrency:
-  group: github-pages
+  group: pallabi-pages
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout imported website
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install image tools
+      - name: Image support
         run: python -m pip install Pillow==11.3.0
 
-      # One-time, upload-only update. No terminal required for the site owner.
-      - name: Apply the leadership and Photo Cards update
-        if: ${{ hashFiles('pallabi-update-assets.zip') != '' }}
+      - name: Apply the one-time complete release
+        if: ${{ hashFiles('pallabi-final-release.zip') != '' }}
         run: |
-          python -m zipfile -e pallabi-update-assets.zip .pallabi-update
-          python .pallabi-update/apply_leadership_update.py .
-          python .pallabi-update/apply_gallery_update.py .
+          python -m zipfile -e pallabi-final-release.zip .pallabi-release
+          python .pallabi-release/install.py .
 
-      - name: Prepare website images
+      - name: Configure URLs for this GitHub account and optional Cloudflare domain
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PALLABI_CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+        run: python scripts/release_runtime.py configure
+
+      - name: Create optimized hospital photos and Photo Cards
         run: python scripts/prepare_images.py
 
-      - name: Generate website
+      - name: Generate both languages of the website
         run: python build.py
 
-      - name: Verify both updates
-        if: ${{ hashFiles('pallabi-update-assets.zip') != '' }}
-        run: |
-          python .pallabi-update/verify_leadership_pages.py .
-          python .pallabi-update/verify_gallery_update.py .
+      - name: Version CSS and JS; write sitemap, canonical URLs and CNAME
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PALLABI_CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+        run: python scripts/release_runtime.py finalize
 
-      # Save the final, real site files to the repository, then delete the
-      # temporary update ZIP so this code is not reapplied on future builds.
-      - name: Save updated source and website files
-        if: ${{ hashFiles('pallabi-update-assets.zip') != '' }}
+      - name: Verify leadership, both galleries, photos, URLs and deployment
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          PALLABI_CUSTOM_DOMAIN: ${{ vars.CUSTOM_DOMAIN }}
+        run: python scripts/release_runtime.py verify
+
+      - name: Permanently save installed source files (first deploy only)
+        if: ${{ hashFiles('pallabi-final-release.zip') != '' }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          rm pallabi-update-assets.zip
-          git add -A -- build.py content/hospital.json content/photocards.json scripts/prepare_images.py site/assets/style.css site/assets/app.js README.md CONTENT_TODO.md source-images site pallabi-update-assets.zip
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm pallabi-final-release.zip
+          git add -A -- build.py README.md CONTENT_TODO.md NEW-REPOSITORY.md \
+            content scripts source-images site/assets pallabi-final-release.zip
           if git diff --cached --quiet; then
-            echo "No new source changes to save."
+            echo 'No source changes to save.'
           else
-            git commit -m "Keep Papry Rahman as sole leader and add 14 gallery photo cards"
-            if git push origin HEAD:main; then
-              echo "Updated source files saved to main."
-            else
-              echo "::warning::GitHub rejected the automatic source commit. The current website can still deploy, but check branch permissions."
-            fi
+            git commit -m 'Publish final hospital site: Chairman and bilingual photo cards'
+            git push origin HEAD:main
           fi
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload website artifact
+      - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
   deploy:
     needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+      url: ${{ steps.pages.outputs.page_url }}
     steps:
-      - id: deployment
-        name: Deploy website
+      - id: pages
+        name: Publish
         uses: actions/deploy-pages@v4
